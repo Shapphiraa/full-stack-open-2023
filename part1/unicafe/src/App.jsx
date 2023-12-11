@@ -2,19 +2,26 @@ import { useState } from 'react'
 
 const Button = (props) => <button onClick={props.handleClick}>{props.text}</button>
 
-const StatisticLine = (props) => <p>{props.name} {props.value}</p>
+const StatisticLine = (props) => (
+<tr>
+  <td>{props.name}</td>
+  <td>{props.value}</td>
+</tr>
+)
 
 const Title = (props) => <h1 className="text-lg font-semibold">{props.title}</h1>
 
 const Statistics = (props) => (
-  <div>
-  <StatisticLine name="good" value={props.good}/>
-  <StatisticLine name="neutral" value={props.neutral}/>
-  <StatisticLine name="bad" value={props.bad}/>
-  <StatisticLine name="all" value={props.allClicks}/>
-  <StatisticLine name="average" value={(props.good - props.bad) / props.allClicks}/>
-  <StatisticLine name="positive" value={props.good / props.allClicks * 100 + "%"}/>
-  </div>
+  <table>
+    <tbody>
+        <StatisticLine name="good" value={props.good}/>
+        <StatisticLine name="neutral" value={props.neutral}/>
+        <StatisticLine name="bad" value={props.bad}/>
+        <StatisticLine name="all" value={props.allClicks}/>
+        <StatisticLine name="average" value={(props.good - props.bad) / props.allClicks}/>
+        <StatisticLine name="positive" value={props.good / props.allClicks * 100 + "%"}/>
+    </tbody>
+  </table>
 )
 
 const App = () => {
